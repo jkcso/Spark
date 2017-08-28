@@ -1,0 +1,23 @@
+{% extends 'problem/base.html' %}
+{% load staticfiles %}
+{% block title %}Problem Form{% endblock %}
+
+{% block main_body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>Subscribe!</h3>
+          <br/>
+        <form class="form-horizontal" action="" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="email">Subscribe below for updates!</label>
+            <textarea type="email" class="form-control" rows ="1" id="email" placeholder="Enter your email address" name="email"></textarea>
+          </div>
+          <button type="submit" class="btn btn-secondary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

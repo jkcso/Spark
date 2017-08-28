@@ -1,0 +1,134 @@
+{% extends 'problem/base.html' %}
+{% load staticfiles %}
+{% block title %}Problem Form{% endblock %}
+
+{% block main_body %}
+
+<div id="start" class="jumbotron no-shadow start_jumbotron container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 style="color: purple"><b>Let's get started
+                <br> in <span class="badge"
+                              style="background-color:orange;
+                              font-size: inherit;">4</span>
+                Simple Steps</b>
+            </h1>
+            <a href="#problem-title">
+                <button type="button" class="btn btn-success btn-lg
+                button_style">
+                    Start
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<form class="form-horizontal" action="" method="post">
+{% csrf_token %}
+    <div class="form-group">
+        <div id="problem-title" class="container-fluid prob_form_div">
+            <div class="jumbotron" style="background-image: url(
+                    {% static 'problem/images/prob-title-img.png' %});
+                    background-blend-mode: multiply">
+                <label for="title" class="page-header control-label
+                prob_form_label">
+                    <h2>1. Give us a short and catchy title for the
+                    vision/problem you hope to be solved</h2>
+                </label>
+
+                <input type="text" class="form-control input-lg" id="title"
+                       placeholder="Title" name="title"/>
+
+                <a href="#problem-description"><p>Next</p></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div id="problem-description" class="container-fluid prob_form_div">
+            <div class="jumbotron" style="background-image: url(
+                    {% static 'problem/images/prob-description-img.png' %});">
+                <label for="description" class="page-header prob_form_label">
+                    <h2>2. Now, describe the problem/vision as best as you can
+                        .</h2>
+                </label>
+                <textarea class="form-control input-lg" rows="5"
+                          id="description"
+                          placeholder="Write a small description of the problem and your preferable solution"
+                          name="description"></textarea>
+
+                <a href="#problem-type"><p>Next</p></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div id="problem-type" class="container-fluid prob_form_div">
+            <div class="jumbotron" style="background-color: deepskyblue">
+                <label for="project-type" class="page-header prob_form_label">
+                    <h2>3. What type of solution you think will be better?
+                    </h2>
+                </label>
+                <br/>
+                <label class="inline">
+                    <input type="checkbox" class="input-lg" id=project-type>
+                    <h4 style="text-shadow: none"> Web Application </h4>
+                </label>
+                <label class="inline"><input type="checkbox" class="input-lg"
+                                             value="">
+                    <h4 style="text-shadow: none"> Mobile Application </h4>
+                </label>
+
+                <a href="#problem-tag"><p>Next</p></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div id="problem-tag" class="container-fluid prob_form_div">
+            <div class="jumbotron" style="background-color: orange">
+               <!-- Problem Tags -->
+               <label for="tags" class="page-header prob_form_label">
+                   <h2>4. What keywords do you think describe your problem
+                       best?</h2></label>
+               <input type="text" class="form-control input-lg" id="tags"
+                      placeholder="Please provide us with some tags/keywords"
+                      name="tags">
+                <button type="submit" class="btn btn-link" style="color: white"
+                ><p>Submit</p></button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+        $(document).ready(function(){
+          // Add smooth scrolling to all links in navbar + footer link
+          $("body a").on('click', function(event) {
+
+           // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (900) specifies the number of milliseconds
+            //it takes to scroll to the specified area
+            var scrollTime = 900;
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, scrollTime, function(){
+
+              // Add hash (#) to URL when done scrolling (default click behavior)
+              window.location.hash = hash;
+              });
+            } // End if
+          });
+        })
+
+</script>
+{% endblock %}

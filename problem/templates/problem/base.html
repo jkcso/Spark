@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+
+  <title>{% block title %}Spark{% endblock %}</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!--<link href="{% static 'problem/css/dropzone.css' %}" type="text/css" rel="stylesheet"/>-->
+  <link rel="stylesheet" type="text/css" href="{% static 'problem/css/style.css' %}">
+
+<!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'problem/css/style.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<!-- FontAwesome CDN-->
+<script src="https://use.fontawesome.com/a33d783bbb.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <div class="topnav" id="myTopnav">
+      <div class="row">
+        <div class="col-md-4">
+          <a href="{% url 'problem:index' %}" class="home"><h3>Spark</h3></a>
+          <a href="{% url 'problem:problem_list' %}">Problems</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#moreinfo">More info</a>
+        </div>
+        <div class="col-md-6">
+          <div id="custom-search-input">
+            <div class="input-group">
+              <form id="problem-list-filter" action="{% url 'problem:problem_list' %}">
+                <input class="search-query form-control" name="{{ form.query.html_name }}"  type="search" placeholder="Enter a keyword">
+              </form>
+              <span class="input-group-btn">
+                <button class="btn btn-danger" type="button">
+                  <span class=" glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <a href="#signin">Sign in</a>
+          <a href="{% url 'user:register' %}">Sign up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+{% block main_body %}
+{% endblock %}
+
+  <footer>
+
+  </footer>
+
+<script>
+// To truncate the text of the descriptions
+$(function(){
+  $(".description-snippet").each(function(i){
+    len=$(this).text().length;
+    if(len>80)
+    {
+      $(this).text($(this).text().substr(0,80)+'...');
+    }
+  });
+});
+</script>
+
+<script>
+window['_fs_debug'] = false;
+window['_fs_host'] = 'fullstory.com';
+window['_fs_org'] = '55XB2';
+window['_fs_namespace'] = 'FS';
+(function(m,n,e,t,l,o,g,y){
+    if (e in m && m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'); return;}
+    g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[];
+    o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
+    y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+    g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){g(l,v)};
+    g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
+    g.clearUserCookie=function(c,d,i){if(!c || document.cookie.match('fs_uid=[`;`]*`[`;`]*`[`;`]*`')){
+    d=n.domain;while(1){n.cookie='fs_uid=;domain='+d+
+    ';path=/;expires='+new Date(0).toUTCString();i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}};
+})(window,document,window['_fs_namespace'],'script','user');
+</script>
+<br />
+</body>
+
+<footer>
+  <div class="bottomnav" id="myBottomnav">
+    <div class="row">
+      <div class="col-md-12">
+        <p><u>Disclaimer:</u> All ideas/problems posted on Spark can be used by any person/developer who wants to invest time
+           (and probably money) in creating a solution. Spark strongly advises developers to give credit to
+           the person who posted the problem. However, Spark cannot guarantee to its users that such procedures
+           will be followed and therefore isn't responsible on any legal issues arised by such arguments. </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>

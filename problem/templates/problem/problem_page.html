@@ -1,0 +1,92 @@
+{% extends 'problem/base.html' %}
+{% load staticfiles %}
+{% block title %}Problem Page{% endblock %}
+
+{% block main_body %}
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>{{ problem.title }}</h1>
+    </div>
+    <div class="col-md-12">
+      <h4>Description</h4>
+    </div>
+      <br />
+    <div class="row justify-content-md-center">
+      <div class="col-md-10">
+        <p id="description">{{ problem.description }}</p>
+      </div>
+      <div class="col-md-1 col-centered">
+        <form action="{% url 'problem:prob_upvote' problem.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-triangle-top"></span></button>
+        </form>
+        <h2>{{ problem.diff_votes }}</h2>
+        <form action="{% url 'problem:prob_downvote' problem.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button>
+        </form>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-12 col-centered">
+        <a href="{% url 'problem:create_solution' problem.id %}">
+          <button type="submit" class="btn btn-primary">Submit a solution</button>
+        </a>
+      </div>
+    </div>
+
+      <div class="text-right">
+          <a href="{% url 'problem:subscribe' problem.id %}">
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+          </a>
+      </div>
+  </div>
+
+    <br>
+
+    <div class="container">
+        <div class="row">
+{#            <div class="col-md-6">#}
+                <div id="disqus_thread" class="col-md-6"></div>
+{#            </div>#}
+
+            <div class="col-md-6 col-centered">
+                <h3>Solutions</h3>
+                {% for solution in problem.solution_set.all %}
+                    <div class="col-md-12">
+                              <a href="{% url 'problem:solution_page' problem.id solution.id %}">
+                        <div class="thumbnail top-rated-solution">
+                            <div class="col-sm-3">
+                                <h3>{{ forloop.counter }}</h3>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="description-snippet">
+                                    {{ solution.description }}</p>
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = location.href;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = {{ problem.id }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://spark-webapp.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endblock %}

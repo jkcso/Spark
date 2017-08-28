@@ -1,0 +1,32 @@
+{% extends 'user/base.html' %}
+
+{% block title %}User Profile Page{% endblock %}
+
+{% block main_body %}
+  <div class="container">
+    <div class="display-1">
+      <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-3">
+        <img class="img-profile" href="{{user.image}}" alt="user did not provide
+         an image">
+      </div>
+      <div class="col-md-6">
+{#        <h5>Username: {{ user.username }}</h5>#}
+        <h5>Email: {{ user.email }}</h5>
+      </div>
+    </div>
+    <!-- Here add an if statement if that user is a developer and then show more information -->
+    <!-- <div class="col-md-12">
+      <br />
+      <h5>About me:</h5>
+      <p>{{ user.aboutme }}</p>
+      <h5>Current Projects:</h5>
+      <p>{{ user.curr_projects }}</p>
+      <h5>Previous Projects:</h5>
+      <p>{{ user.prev_projects }}</p>
+    </div> -->
+  </div>
+{% endblock %}

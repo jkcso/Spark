@@ -1,0 +1,40 @@
+{#{% extends 'problem/base.html' %}#}
+{##}
+{#{% block title %}Search Results{% endblock %}#}
+{##}
+{#{% block main_body %}#}
+
+{#{% include 'problem/pagination.html' with form_target='problem-list-filter' %}#}
+
+<div class="container">
+  <div class="row">
+      <h3>Problems</h3>
+      {% for problem in object_list %}
+      <div class="col-md-3">
+        <div class="thumbnail search">
+          <a style="color: inherit;" href="{{ problem.get_absolute_url }}">
+            <h3>{{ problem.title }}</h3>
+          </a>
+          <p class="description-snippet">{{ problem.description }}</p>
+            <h4>Votes: <span class="badge"
+                >{{ problem.diff_vote }}</span> </h4>
+        </div>
+      </div>
+      {% empty %}
+          <p class="text-center"> Sorry no entry matches your search</p>
+      {% endfor %}
+  </div>
+</div>
+
+{#    <ul class="problems">#}
+{#      {% for object in object_list %}#}
+{#        <li>#}
+{#            <a href="{{ object.get_absolute_url }}">#}
+{#          <a href="{% url 'problem_page' pk=object.pk %}">#}
+{#            {{ object }}#}
+{#          </a>#}
+{#        </li>#}
+{#      {% endfor %}#}
+{#    </ul>#}
+
+{#{% endblock %}#}
