@@ -17,4 +17,7 @@ This project was implemented using Python’s framework Django and SQlite3 for d
 
 ## License
 1. The copyright of this project belongs to the group of people I have implemented this with.
-2. From this code I removed some parts on purpose to make it broken.
+
+## Note
+In this repo there exists a subset of my work, often intentionally broken or misleading to avoid disrespectful people from copying and
+pasting.
