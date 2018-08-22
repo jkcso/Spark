@@ -1,7 +1,7 @@
 # Spark
 
-## Synopsis
-Spark is a social network for primarily 2 types of people: Part time or unemployed developers and non technical people.
+## Who is Who
+Spark is an online forum for two types of people: Part time or unemployed developers and non technical people with ideas or mini tech problems.  Developers can get inspired and hone their problem solving skills, understand what is trending and more importantly get iterative feedback from stakeholders.  Non technical people are often missing the expertise and skillset to proceed with their idea or problem.  Often, they don’t have the time or energy to practise and learn new skills so we provide them with the capability of posting in this forum and find one or many interested developers.
 
 ## Motivation
 The website has 2 main usages.  Firstly, part time or unemployed developers can see what is trending and get inspiration about problems for which they can implement computerised solutions.  Secondly and maybe more importantly they can now get iterative feedback coming from the interested audience towards what they are building.
