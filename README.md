@@ -16,8 +16,7 @@ Spark's goal is to *avoid* creating (another) database full of posts that no one
 This project was implemented using Python’s framework Django and SQlite3 for databases for backend and HTML and CSS for the front end.
 
 ## License
-The copyright of this project belongs to the group of amazing people cooperated with to implemented this summer project during our studies.
+The copyright of this project belongs to the group of amazing people cooperated with to implemented this summer project during our studies in Imperial College London.
 
 ## Note
-In this repo there exists a subset of my work, often intentionally broken or misleading to avoid disrespectful people from copying and
-pasting.
+Part of my work is intentionally broken or misleading to avoid disrespectful people from copying and pasting.
